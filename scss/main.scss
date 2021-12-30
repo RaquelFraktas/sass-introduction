@@ -25,16 +25,32 @@ $font-sm: 20px;
 }
 
 
-
-.banner h1{
-    // $color-secondary: red !global; - this overrides the global variable declaration
-    font-size: $font-lg;
+@mixin headingStyles($fontSize: 50px) {
+    // defining the fontSize in the arg adds a default parameter
+    //this keeps code DRY
+    font-size: $fontSize;
     color: $color-secondary;
     text-align: center;
 }
 
-.footer h3{
-    font-size: $font-md;
-    color: $color-secondary;
-    text-align: center;
+@mixin transition($param...){
+    transition: $param;
+    //this gives you transition times into child element
+    //this needs ... because it can take multiple params
+}
+
+.banner h1{
+    // $color-secondary: red !global; - this overrides the global variable declaration
+    @include headingStyles($font-lg);
+}
+
+.footer h3 {
+    // font-size: $font-md; i can declare font size here, or add it as an arg when calliing the mixin
+    @include headingStyles($font-md);
+    @include transition(color .5s, background-color 1s);
+
+    &:hover {
+        color: $color-tertiary;
+        background-color: $color-primary;
+    }
 }
