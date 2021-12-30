@@ -8,7 +8,11 @@ $font-md: 30px;
 $font-sm: 20px;
 
 .nav {
-    background-color: $color-primary;
+    background-color: 
+    // lighten($color-primary, 20%); //darken works too
+    // transparentize($color-primary, .6);
+    mix(blue,green, 40%);
+
     ul li {
         list-style: none;  
     }
@@ -55,6 +59,10 @@ $font-sm: 20px;
 //     }
 // }
 
+@function fontSize($size: 25px){
+   @return $size * 2;
+}
+
 h1 {
     //since im removing the banner h1 class, im extending it to my h3 footer. this is to demo an example
     //i created an h1 to demo extend
@@ -74,4 +82,13 @@ h1 {
     //     color: $color-tertiary;
     //     background-color: $color-primary;
     // }
+}
+
+.banner p{
+    font-size: fontSize($font-sm)
+
+}
+
+.footer p{
+    font-size: fontSize(30px);
 }
