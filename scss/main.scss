@@ -28,11 +28,12 @@ $font-sm: 20px;
     }
 }
 
-.heading {
+%heading {
     color: $color-primary;
     font-size: $font-lg;
     background-color: $color-secondary;
     text-align: center;
+    //change the heading class into a place holder selector
 }
 
 // @mixin headingStyles($fontSize: 50px) {
@@ -59,14 +60,16 @@ $font-sm: 20px;
 //     }
 // }
 
-@function fontSize($size: 25px){
-   @return $size * 2;
-}
+// @function fontSize($size: 25px){
+//    @return $size * 2;
+// }
 
 h1 {
     //since im removing the banner h1 class, im extending it to my h3 footer. this is to demo an example
     //i created an h1 to demo extend
-    @extend .heading;
+    @extend %heading;
+    //call the place holder selector instead of the class
+    //if we just need the class to extend styles to elements and the class is not used anywhere else, use placeholder selectors
     &:hover {
         background-color: green;
     }
@@ -84,11 +87,13 @@ h1 {
     // }
 }
 
-.banner p{
-    font-size: fontSize($font-sm)
+// .banner p{
+//     font-size: fontSize($font-sm)
+//     //to call the function
 
-}
+// }
 
-.footer p{
-    font-size: fontSize(30px);
-}
+// .footer p{
+//     font-size: fontSize(30px);
+//     //to call the function
+// }
