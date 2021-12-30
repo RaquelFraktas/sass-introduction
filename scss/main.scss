@@ -24,33 +24,54 @@ $font-sm: 20px;
     }
 }
 
-
-@mixin headingStyles($fontSize: 50px) {
-    // defining the fontSize in the arg adds a default parameter
-    //this keeps code DRY
-    font-size: $fontSize;
-    color: $color-secondary;
+.heading {
+    color: $color-primary;
+    font-size: $font-lg;
+    background-color: $color-secondary;
     text-align: center;
 }
 
-@mixin transition($param...){
-    transition: $param;
-    //this gives you transition times into child element
-    //this needs ... because it can take multiple params
-}
+// @mixin headingStyles($fontSize: 50px) {
+//     // defining the fontSize in the arg adds a default parameter
+//     //this keeps code DRY
+//     font-size: $fontSize;
+//     color: $color-secondary;
+//     text-align: center;
+// }
 
-.banner h1{
-    // $color-secondary: red !global; - this overrides the global variable declaration
-    @include headingStyles($font-lg);
+// @mixin transition($param...){
+//     transition: $param;
+//     //this gives you transition times into child element
+//     //this needs ... because it can take multiple params
+// }
+
+// .banner h1{
+//     // $color-secondary: red !global; - this overrides the global variable declaration
+//     // @include headingStyles($font-lg);
+
+//     &:hover {
+//         background-color: green
+
+//     }
+// }
+
+h1 {
+    //since im removing the banner h1 class, im extending it to my h3 footer. this is to demo an example
+    //i created an h1 to demo extend
+    @extend .heading;
+    &:hover {
+        background-color: green;
+    }
 }
 
 .footer h3 {
+    @extend h1
     // font-size: $font-md; i can declare font size here, or add it as an arg when calliing the mixin
-    @include headingStyles($font-md);
-    @include transition(color .5s, background-color 1s);
+    // @include headingStyles($font-md);
+    // @include transition(color .5s, background-color 1s);
 
-    &:hover {
-        color: $color-tertiary;
-        background-color: $color-primary;
-    }
+    // &:hover {
+    //     color: $color-tertiary;
+    //     background-color: $color-primary;
+    // }
 }
